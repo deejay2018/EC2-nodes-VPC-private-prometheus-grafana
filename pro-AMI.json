@@ -1,0 +1,19 @@
+{
+  "variables": {
+    "aws_region": "eu-west-1"
+  },
+  "builders": [{
+            "type": "amazon-ebs",
+            "instance_type": "t2.micro",
+            "region": "eu-west-1",
+            "source_ami": "ami-0bb3fad3c0286ebd5",
+            "ssh_username": "ec2-user",
+            "ami_name": "aws-linux-apache {{timestamp}}"
+  }],
+  "provisioners": [
+   {
+       "type": "shell",
+       "script": "install_ami_prometheus.sh"
+   }
+ ]
+}
